@@ -13,8 +13,9 @@ body{
     padding: 16px;
 }
 
-#container .header .weather-title h5{
+#container .header .weather-title h2{
     color:#fff;
+    font-size: 1.2rem;
     text-transform: uppercase;
 }
 
@@ -43,3 +44,74 @@ body{
     background: rgb(38,224,185);
     background: linear-gradient(90deg, rgba(38,224,185,1) 0%, rgba(38,224,185,1) 30%, rgba(185,255,0,1) 100%);
 }
+
+/* card */
+#weather{
+    margin-top: 48px;
+}
+
+#weather .card{
+    border: none;
+}
+
+#weather .card .header-title{
+    background-color: #272E38; 
+    padding: 16px;   
+}
+
+#weather .card .header-title h2{
+    font-size: 1.2rem;   
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+#weather .card .container-image img{
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+#weather .card .container-image div{
+    width: 100%;
+    height: 3px;
+    background: rgb(38,224,185);
+    background: linear-gradient(90deg, rgba(38,224,185,1) 0%, rgba(38,224,185,1) 30%, rgba(185,255,0,1) 100%);
+}
+
+#weather .card .city-detail{
+    display: flex;
+}
+
+#weather .card .city-detail .container-detail{
+    background-color: #313842;
+    padding: 24px;
+}
+
+#weather .card .city-detail .container-detail h3{
+    font-size: 3.6rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0px;
+}
+
+#weather .card .city-detail .container-detail p{
+    font-size: 1.0rem;
+    font-weight: 600;
+    color: #fff;
+    text-transform: uppercase;
+    margin-bottom: 0;
+}
+
+#weather .card .city-detail .container-detail .container-coordenadas{
+    display: flex;
+}
+
+#weather .card .city-detail .container-detail .container-coordenadas p{
+    font-weight: 300;
+    color: #fff;
+    margin-right: 8px;
+    text-transform: lowercase;
+}
+
+
+
