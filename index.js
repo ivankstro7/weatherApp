@@ -17,14 +17,16 @@ window.fetch(api + "cali")
         header.appendChild(title);
 
         //container banner
-        const image = document.createElement('img');
-        image.src = "./assets/landScape.jpg"
+        // const image = document.createElement('img');
+        // image.src = "./assets/landScape.jpg"
 
-        const line = document.createElement('div');
+        // const containerImage = document.createElement('div');
+        // containerImage.append(image);
+        // containerImage.className = "container-image"
 
-        const containerImage = document.createElement('div');
-        containerImage.append(image,line);
-        containerImage.className = "container-image"
+        //degradado
+        const degrade = document.createElement('div');
+        degrade.classList = "degrade"
 
         // container city
         const tempCity = document.createElement('h3');
@@ -34,22 +36,19 @@ window.fetch(api + "cali")
         CityName.textContent = responseJson.name;
         CityName.className = "name"
 
-        const coordenadas = document.createElement('p');
-        coordenadas.textContent = "Coordenadas de la ciudad :"
-
         const longitude = document.createElement('p');
-        longitude.textContent = responseJson.coord.lon;
+        longitude.textContent = "Lon: " + responseJson.coord.lon;
 
         const latitude = document.createElement('p')
-        latitude.textContent = responseJson.coord.lat;
+        latitude.textContent = "Lat: " + responseJson.coord.lat;
 
         const lonAndLat = document.createElement('div');
-        lonAndLat.append(coordenadas,longitude, latitude);
+        lonAndLat.append(longitude, latitude);
         lonAndLat.className = "container-coordenadas"
 
-        const containerDetail = document.createElement('div');
-        containerDetail.append(tempCity,CityName,lonAndLat);
-        containerDetail.className = "container-detail col-9"
+        const bodyDetail = document.createElement('div');
+        bodyDetail.append(tempCity,CityName,lonAndLat);
+        bodyDetail.classList = "body-detail col-9"    
 
         // weather icon
         const icon = document.createElement('img');
@@ -60,10 +59,14 @@ window.fetch(api + "cali")
 
         const containerDay = document.createElement('div');
         containerDay.append(icon,description);
-        containerDay.className = "container-icon"  
+        containerDay.classList = "body-icon col-3" 
+
+        const containerDetail = document.createElement('div');
+        containerDetail.append(bodyDetail,containerDay);
+        containerDetail.classList = "container-detail col-12"    
         
         const detailAndWeather = document.createElement('div');
-        detailAndWeather.append(containerDetail,containerDay)
+        detailAndWeather.append(degrade,containerDetail)
         detailAndWeather.className = "city-detail"
 
         // body card - humidiy
@@ -74,8 +77,12 @@ window.fetch(api + "cali")
         humidityTitle.textContent = "Humidity"
 
         const containerHumidity = document.createElement('div');
-        containerHumidity.append(humidity,humidityTitle)
-        containerHumidity.className = "humidity"
+        containerHumidity.append(humidity,humidityTitle);
+        containerHumidity.className = "body-text"
+
+        const wrapHumidity = document.createElement('div');
+        wrapHumidity.append(containerHumidity);
+        wrapHumidity.classList = "column col-4"
 
         // body card - wind
         const wind = document.createElement('h4');
@@ -86,7 +93,11 @@ window.fetch(api + "cali")
 
         const containerWind = document.createElement('div');
         containerWind.append(wind,windTitle);
-        containerWind.className = "wind"
+        containerWind.className = "body-text"
+
+        const wrapWind = document.createElement('div');
+        wrapWind.append(containerWind);
+        wrapWind.className = "column col-4"
 
         // body card - feels like
         const feelsLike = document.createElement('h4');
@@ -97,15 +108,20 @@ window.fetch(api + "cali")
 
         const containerFeels = document.createElement('div');
         containerFeels.append(feelsLike,feelsLikeTitle);
-        containerFeels.className = "feelsLike"   
+        containerFeels.className = "body-text"
+
+        const wrapFeels = document.createElement('div');
+        wrapFeels.append(containerFeels);
+        wrapFeels.className = "column col-4"   
 
         const bodyCard = document.createElement('div');
-        bodyCard.append(containerHumidity,containerWind,containerFeels);
+        bodyCard.append(wrapHumidity,wrapWind,wrapFeels);
+        bodyCard.className = "body-card"
 
         // wrap
         const card = document.createElement('div');
         card.className = "card"
-        card.append(header,containerImage,detailAndWeather,bodyCard);
+        card.append(header,detailAndWeather,bodyCard);
 
         todosLosItems.push(card);
 
