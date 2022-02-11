@@ -6,7 +6,7 @@ const weather = document.querySelector('#weather');
 window.fetch(api + "cali")
     .then((respuesta) => respuesta.json())
     .then(responseJson => {
-    const todosLosItems = [];   
+    const todosLosItems = []; 
         // header
         const header = document.createElement('div');
         header.className = "header-title"
@@ -14,7 +14,11 @@ window.fetch(api + "cali")
         const title = document.createElement('h2');
         title.textContent = "¿How is the weather in the city?"
 
-        header.appendChild(title);
+        //line
+        const line = document.createElement('div');
+        line.className = "line"
+
+        header.append(title,line);
 
         //degradado
         const degrade = document.createElement('div');
@@ -53,16 +57,23 @@ window.fetch(api + "cali")
         containerDay.append(icon,description);
         containerDay.classList = "body-icon col-3" 
 
+        const image = document.createElement('img');
+        image.src = "/assets/bg.jpg";
+
+        const containerImage = document.createElement('div');
+        containerImage.appendChild(image);
+        containerImage.className = "container-image"
+
         const containerDetail = document.createElement('div');
         containerDetail.append(bodyDetail,containerDay);
         containerDetail.classList = "container-detail col-12"    
         
         const detailAndWeather = document.createElement('div');
-        detailAndWeather.append(degrade,containerDetail)
-        detailAndWeather.className = "city-detail"
+        detailAndWeather.append(degrade,containerDetail,containerImage)
+        detailAndWeather.classList = "city-detail"
 
-        // body card - humidiy
-        const humidity = document.createElement('h4');
+        // body card - humidity
+        const humidity = document.createElement('h3');
         humidity.textContent = responseJson.main.humidity + " %";
 
         const humidityTitle = document.createElement('p');
@@ -72,12 +83,15 @@ window.fetch(api + "cali")
         containerHumidity.append(humidity,humidityTitle);
         containerHumidity.className = "body-text"
 
+        const lineH = document.createElement('div');
+        lineH.className = "line"
+
         const wrapHumidity = document.createElement('div');
-        wrapHumidity.append(containerHumidity);
-        wrapHumidity.classList = "column col-4"
+        wrapHumidity.append(containerHumidity,lineH);
+        wrapHumidity.classList = "column humidity col-4"
 
         // body card - wind
-        const wind = document.createElement('h4');
+        const wind = document.createElement('h3');
         wind.textContent = responseJson.wind.speed + " km";
 
         const windTitle = document.createElement('p');
@@ -87,12 +101,15 @@ window.fetch(api + "cali")
         containerWind.append(wind,windTitle);
         containerWind.className = "body-text"
 
+        const lineW = document.createElement('div');
+        lineW.className = "line"
+
         const wrapWind = document.createElement('div');
-        wrapWind.append(containerWind);
-        wrapWind.className = "column col-4"
+        wrapWind.append(lineW,containerWind);
+        wrapWind.className = "column wind col-4"
 
         // body card - feels like
-        const feelsLike = document.createElement('h4');
+        const feelsLike = document.createElement('h3');
         feelsLike.textContent = responseJson.main.feels_like;
 
         const feelsLikeTitle = document.createElement('p');
@@ -102,9 +119,12 @@ window.fetch(api + "cali")
         containerFeels.append(feelsLike,feelsLikeTitle);
         containerFeels.className = "body-text"
 
+        const lineF = document.createElement('div');
+        lineF.className = "line"
+
         const wrapFeels = document.createElement('div');
-        wrapFeels.append(containerFeels);
-        wrapFeels.className = "column col-4"   
+        wrapFeels.append(containerFeels,lineF);
+        wrapFeels.className = "column feels-like col-4"   
 
         const bodyCard = document.createElement('div');
         bodyCard.append(wrapHumidity,wrapWind,wrapFeels);
