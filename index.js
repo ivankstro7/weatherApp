@@ -16,14 +16,6 @@ window.fetch(api + "cali")
 
         header.appendChild(title);
 
-        //container banner
-        // const image = document.createElement('img');
-        // image.src = "./assets/landScape.jpg"
-
-        // const containerImage = document.createElement('div');
-        // containerImage.append(image);
-        // containerImage.className = "container-image"
-
         //degradado
         const degrade = document.createElement('div');
         degrade.classList = "degrade"
@@ -52,10 +44,10 @@ window.fetch(api + "cali")
 
         // weather icon
         const icon = document.createElement('img');
-        icon.src = `${api}${weather.icon}`;
+        icon.src = responseJson.weather[0].icon;
 
         const description = document.createElement('p');
-        description.textContent = responseJson.weather.main;
+        description.textContent = responseJson.weather[0].description;
 
         const containerDay = document.createElement('div');
         containerDay.append(icon,description);
