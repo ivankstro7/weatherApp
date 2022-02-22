@@ -102,7 +102,7 @@ window.fetch(url)
 
         const image = document.createElement('img');
         
-        image.src = "/assets/bg2.jpg";
+        image.src = "../assets/bg2.jpg";
 
         const containerImage = document.createElement('div');
         containerImage.appendChild(image);
