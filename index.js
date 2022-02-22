@@ -1,14 +1,11 @@
 // ID contenedor padre
 const weather = document.querySelector('#weather');
 
-const DEFAULT_CITY = "pasto"
+const DEFAULT_CITY = "cali"
 
 
 //api key
 const apiKey = "6d7ac337bb80e4a6071f4816f5fe5c24";
-
-//api
-// const url = "https://api.openweathermap.org/data/2.5/weather?appid=6d7ac337bb80e4a6071f4816f5fe5c24&q=cali"
 
 // btn
 const btn = document.getElementById("btn").addEventListener("onclick", consultarClima);
@@ -25,7 +22,6 @@ const url = `https://api.openweathermap.org/data/2.5/weather?q=${realCity}&appid
 window.fetch(url)
     .then((respuesta) => respuesta.json())
     .then(responseJson => {
-        // const todosLosItems = []; 
 
         const currentCard = document.querySelector('.card');
         if (currentCard) {
